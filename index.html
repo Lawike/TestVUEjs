@@ -25,21 +25,18 @@
 			<input type="checkbox" v-model="success">
 		</div>
 	</div>
-	<div class="card" id="song" style="width: 18rem;">
-		<img src="..." class="card-img-top" alt="...">
-		<div class="card-body">
-		   	<h5 class="card-title">{{ title }}</h5>
-		   	<p class="card-text">
-		   	 {{ artist }}</p>
-	    	<button class="btn btn-primary" v-if="!listen" @click="startListen">Ecouter</button>
-	    	<button class="btn btn-danger" v-if="stop" @click="stopListen">Arrêter</button>
-	  	</div>
+	<div id="song">
+		<song-card 
+		v-for="song in songs"
+		v-bind:song="song"></song-card>
 	</div>
+
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 	<script src="js/app.js"></script>
 </body>
 </html>
 
-<!-- 2h00 apprentissage des bases de Vue.js -->
+<!-- 4h00 apprentissage des bases de Vue.js -->
+<!-- 20minutes réalisation du component "Song-card">
 

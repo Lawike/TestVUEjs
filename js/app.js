@@ -19,27 +19,45 @@ let vm = new Vue({
 
 })
 
-let song = new Vue({
-	el:'#song',
-	data:{
-		image: 'no file',
-		title: 'Titre',
-		artist: 'Artiste',
-		listen: false,
-		stop:false,
-	},
+
+
+Vue.component('song-card',{
+	props: ['song'],
+	template: `
+	<div class="card" style="width: 18rem;">
+		<img src="..." class="card-img-top" alt="...">
+		<div class="card-body">
+		   	<h5 class="card-title">{{ song.title }}</h5>
+		   	<p class="card-text">
+		   	 {{ song.artist }}</p>
+	    	<button class="btn btn-primary" v-if="!song.listen" @click="startListen">Ecouter</button>
+	    	<button class="btn btn-danger" v-if="song.stop" @click="stopListen">Arrêter</button>
+	  	</div>
+	</div>
+	`,
 	methods: {
-		startListen: function ()
+	startListen: function ()
 		{
-			this.listen = true
-			this.stop =true
+			this.song.listen = true
+			this.song.stop = true
 		},
-		stopListen: function ()
+	stopListen: function ()
 		{
-			this.listen=false
-			this.stop=false
+			this.song.listen = false
+			this.song.stop = false
 		}
 	}
 })
-// diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
+new Vue({
+	el:'#song',
+	data:{
+		songs: [
+		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
+		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
+		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
+		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
+	]
+	},
+})
+//diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 //Tutorial : https://www.youtube.com/playlist?list=PLw5h0DiJ-9PAO_yAL6wtugq7u3Rs1QmwN
