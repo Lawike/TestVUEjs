@@ -18,5 +18,28 @@ let vm = new Vue({
 	}
 
 })
+
+let song = new Vue({
+	el:'#song',
+	data:{
+		image: 'no file',
+		title: 'Titre',
+		artist: 'Artiste',
+		listen: false,
+		stop:false,
+	},
+	methods: {
+		startListen: function ()
+		{
+			this.listen = true
+			this.stop =true
+		},
+		stopListen: function ()
+		{
+			this.listen=false
+			this.stop=false
+		}
+	}
+})
 // diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 //Tutorial : https://www.youtube.com/playlist?list=PLw5h0DiJ-9PAO_yAL6wtugq7u3Rs1QmwN
