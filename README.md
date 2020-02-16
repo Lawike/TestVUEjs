@@ -1,12 +1,12 @@
 # TestVUEjs
 Test pour s'entrainer au vuejs
 
-***Temps passé à l'apprentissage de vue.JS***
+###Temps passé à l'apprentissage de vue.JS###
 4 heures de tutoriels et de recherche via la documentation officielle
 
-***Temps passé à l'apprentissage d'AJAX et JSON***
+###Temps passé à l'apprentissage d'AJAX et JSON###
 3 heures
-***Temps passé au développement / Test des fonctionnalités ***
+###Temps passé au développement / Test des fonctionnalités ###
 2 heures
 
 **Notes pour AJAX (mémo)**

@@ -1,23 +1,3 @@
-let vm = new Vue({
-	el: '#app',
-	data: {
-		message: 'Bonjour le monde !',
-		success: true,
-		link: 'google.com',
-		persons: ['Loïc','Hocem','Samy','Snailzer'],
-		},
-	methods: {
-		close: function ()
-		{
-			this.success = false
-		}
-	},
-	mounted: function ()
-	{
-		console.log(this.$el);
-	}
-
-})
 
 //Ajout d'une variable équivalente à un attribut static (Je ne sais pas comment les réaliser en JS)
 //Pour savoir si un morceau est en cours d'écoute
@@ -26,7 +6,7 @@ var listening=false;
 Vue.component('song-card',{
 	props: ['song'],
 	template: `
-	<div class="card ml-5 mb-5" style="width: 18rem;">
+	<div class="card col-sm ml-5 mt-5" style="width: 18rem;">
 		<img src="..." class="card-img-top" alt="...">
 		<div class="card-body">
 		   	<h5 class="card-title">{{ song.title }}</h5>
@@ -42,7 +22,6 @@ Vue.component('song-card',{
 	methods: {
 	startListen: function ()
 		{
-			console.log(this.song.link)
 			if (listening===false) {
 				this.song.listen = true
 				this.song.stop = true
@@ -63,12 +42,14 @@ Vue.component('song-card',{
 		},
 
 	}, mounted(){
+		//On initialise l'attribut audio pour qu'il contienne le morceau à jouer
 		audio = new Audio(this.song.link)
-		audio.volume=0.05;
+		audio.volume=0.05
 		this.audio=audio
 	}
 
 })
+
 //Création d'une vue
 var mainVue = new Vue({
 	el:'#song',
@@ -85,13 +66,12 @@ req.open("GET", url);
 req.onerror = function() {
     console.log("Échec de chargement "+url);
 };
-//Lorsque on accede l'url
+//Lorsque l'on accede l'url
 req.onload = function() {
     if (req.status === 200) {
       var chaine = req.responseText;
       console.log(chaine);
       let data = JSON.parse(chaine);
-      console.log(data["songs"]);
       //On charge les morceaux récupérés dans la vue
       mainVue.songs=data["songs"];
     } else {

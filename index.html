@@ -2,39 +2,28 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Test Vue.js</title>
+	<title>Test VueJS</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 <body>
-	<div id="app">
-		<h1>Hello World !</h1>
-		<a :href="link">{{message}}</a>
-		<div v-if="success">
-			<p>Bravo ca marche</p>
-			<button @click="close"></button>
-		</div>
-		<div v-else>
-			<p>Ca n'a pas marché</p>
-		</div>
-		<ul>
-			<li v-for="person in persons">{{ person }}</li>
-		</ul>
-		<input type="text" v-model="message"></input>
-		<p> {{ message }} </p>
-		<div>
-			<input type="checkbox" v-model="success">
-		</div>
-	</div>
-	<div id="song" class="container row">
+	<header>
+		<nav class="navbar navbar-light bg-light justify-content-center">
+			<h1>Catalogue de musique</h1>
+		</nav>
+	</header>
+	<div id="song" class="container-fluid row justify-content-center">
 		<song-card
 		v-for="song in songs"
 		v-bind:song="song">
 		</song-card>
 	</div>
-
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.js"></script>
 	<script src="js/app.js"></script>
+
+<footer class="footer font-small bg-light">
+	<div class="container text-center py-3">Réalisé par Loïc GAILLARD
+	</div>
+</footer>
 </body>
 </html>
 
