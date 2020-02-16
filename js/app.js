@@ -19,12 +19,14 @@ let vm = new Vue({
 
 })
 
-
+//Ajout d'une variable équivalente à un attribut static (Je ne sais pas comment les réaliser en JS)
+//Pour savoir si un morceau est en cours d'écoute
+var listening=false;
 //Création d'un composant Song-Card permettant d'afficher un morceaux et ses informations
 Vue.component('song-card',{
 	props: ['song'],
 	template: `
-	<div class="card" style="width: 18rem;">
+	<div class="card ml-5 mb-5" style="width: 18rem;">
 		<img src="..." class="card-img-top" alt="...">
 		<div class="card-body">
 		   	<h5 class="card-title">{{ song.title }}</h5>
@@ -35,19 +37,37 @@ Vue.component('song-card',{
 	  	</div>
 	</div>
 	`,
-	//Lancement et arrêt de m'écoute d'un morceau
+	audio: undefined,
+	//Lancement et arrêt de l'écoute d'un morceau
 	methods: {
 	startListen: function ()
 		{
-			this.song.listen = true
-			this.song.stop = true
+			console.log(this.song.link)
+			if (listening===false) {
+				this.song.listen = true
+				this.song.stop = true
+				listening=true
+				this.audio.play()
+			}
+
 		},
 	stopListen: function ()
 		{
-			this.song.listen = false
-			this.song.stop = false
-		}
+			if (listening===true) {
+				this.song.listen = false
+				this.song.stop = false
+				listening=false
+				this.audio.pause()
+			}
+
+		},
+
+	}, mounted(){
+		audio = new Audio(this.song.link)
+		audio.volume=0.05;
+		this.audio=audio
 	}
+
 })
 //Création d'une vue
 var mainVue = new Vue({
@@ -61,16 +81,18 @@ var mainVue = new Vue({
 let url="php/script.php";
 var req = new XMLHttpRequest();
 req.open("GET", url);
+//Si l'url n'est pas accessible
 req.onerror = function() {
     console.log("Échec de chargement "+url);
 };
+//Lorsque on accede l'url
 req.onload = function() {
     if (req.status === 200) {
       var chaine = req.responseText;
       console.log(chaine);
       let data = JSON.parse(chaine);
       console.log(data["songs"]);
-      // do what you have to do with 'data'
+      //On charge les morceaux récupérés dans la vue
       mainVue.songs=data["songs"];
     } else {
       console.log("Erreur " + req.status);
@@ -80,3 +102,4 @@ req.send();
 
 //diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 //Tutorial : https://www.youtube.com/playlist?list=PLw5h0DiJ-9PAO_yAL6wtugq7u3Rs1QmwN
+//Cours AJAX : https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-js/s3.html

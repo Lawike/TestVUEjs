@@ -5,9 +5,9 @@ Test pour s'entrainer au vuejs
 4 heures de tutoriels et de recherche via la documentation officielle
 
 ***Temps passé à l'apprentissage d'AJAX et JSON***
-2 heures
+3 heures
 ***Temps passé au développement / Test des fonctionnalités ***
-1 heure
+2 heures
 
 **Notes pour AJAX (mémo)**
 Ajax permet de créer une interface fonctionnant sur un navigateur avec le langage JavaScript

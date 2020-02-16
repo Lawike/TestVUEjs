@@ -25,8 +25,8 @@
 			<input type="checkbox" v-model="success">
 		</div>
 	</div>
-	<div id="song">
-		<song-card 
+	<div id="song" class="container row">
+		<song-card
 		v-for="song in songs"
 		v-bind:song="song">
 		</song-card>
