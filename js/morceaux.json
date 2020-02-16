@@ -1,0 +1,8 @@
+{	
+		"songs": [
+		{"image": "no file","title": "Titre","artist": "Artiste","listen": false,"stop":false},
+		{"image": "no file","title": "Titre","artist": "Artiste","listen": false,"stop":false},
+		{"image": "no file","title": "Titre","artist": "Artiste","listen": false,"stop":false},
+		{"image": "no file","title": "Titre","artist": "Artiste","listen": false,"stop":false}
+	]
+}

@@ -20,7 +20,7 @@ let vm = new Vue({
 })
 
 
-
+//Création d'un composant Song-Card permettant d'afficher un morceaux et ses informations
 Vue.component('song-card',{
 	props: ['song'],
 	template: `
@@ -35,6 +35,7 @@ Vue.component('song-card',{
 	  	</div>
 	</div>
 	`,
+	//Lancement et arrêt de m'écoute d'un morceau
 	methods: {
 	startListen: function ()
 		{
@@ -48,16 +49,34 @@ Vue.component('song-card',{
 		}
 	}
 })
-new Vue({
+//Création d'une vue
+var mainVue = new Vue({
 	el:'#song',
 	data:{
-		songs: [
-		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
-		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
-		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
-		{image: 'no file',title: 'Titre',artist: 'Artiste',listen: false,stop:false},
-	]
-	},
+		songs: []
+	}
 })
+
+//Récupération des données via AJAX au format JSON
+let url="php/script.php";
+var req = new XMLHttpRequest();
+req.open("GET", url);
+req.onerror = function() {
+    console.log("Échec de chargement "+url);
+};
+req.onload = function() {
+    if (req.status === 200) {
+      var chaine = req.responseText;
+      console.log(chaine);
+      let data = JSON.parse(chaine);
+      console.log(data["songs"]);
+      // do what you have to do with 'data'
+      mainVue.songs=data["songs"];
+    } else {
+      console.log("Erreur " + req.status);
+    }
+};
+req.send();
+
 //diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram
 //Tutorial : https://www.youtube.com/playlist?list=PLw5h0DiJ-9PAO_yAL6wtugq7u3Rs1QmwN
