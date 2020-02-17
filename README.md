@@ -6,7 +6,7 @@ Test pour s'entrainer au vuejs
 https://openclassrooms.com/en/courses/5664336-create-a-web-application-with-vue-js
 
 ## Temps passé à l'apprentissage d'AJAX et JSON
-3 heures via la documentation officielle / le cour d'un de mes proffesseurs : 
+3 heures via la documentation officielle / le cours d'un de mes professeurs : 
 https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-js/s3.html
 
 ## Temps passé au développement / Test des fonctionnalités
