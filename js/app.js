@@ -1,5 +1,4 @@
 
-//Ajout d'une variable équivalente à un attribut static (Je ne sais pas comment les réaliser en JS)
 //Pour savoir si un morceau est en cours d'écoute
 var listening=false;
 //Création d'un composant Song-Card permettant d'afficher un morceaux et ses informations
@@ -7,7 +6,6 @@ Vue.component('song-card',{
 	props: ['song'],
 	template: `
 	<div class="card col-sm ml-5 mt-5 mb-5 mr-5" style="width: 18rem;">
-		<img src="..." class="card-img-top" alt="image">
 		<div class="card-body">
 		   	<h5 class="card-title">{{ song.title }}</h5>
 		   	<p class="card-text">
@@ -61,27 +59,24 @@ var mainVue = new Vue({
 //Récupération des données via AJAX au format JSON
 let url="php/script.php";
 var req = new XMLHttpRequest();
-
-window.setInterval(function(){
-	req.open("GET", url);
-	//Si l'url n'est pas accessible
-	req.onerror = function() {
-	    console.log("Échec de chargement "+url);
-	};
-	//Lorsque l'on accede l'url
-	req.onload = function() {
-	    if (req.status === 200) {
-	      var chaine = req.responseText;
-	      console.log(chaine);
-	      let data = JSON.parse(chaine);
-	      //On charge les morceaux récupérés dans la vue
-	      mainVue.songs=data["songs"];
-	    } else {
-	      console.log("Erreur " + req.status);
-	    }
-	};
-	req.send();
-}, 1000);
+req.open("GET", url);
+//Si l'url n'est pas accessible
+req.onerror = function() {
+    console.log("Échec de chargement "+url);
+};
+//Lorsque l'on accede l'url
+req.onload = function() {
+    if (req.status === 200) {
+      var chaine = req.responseText;
+      console.log(chaine);
+      let data = JSON.parse(chaine);
+      //On charge les morceaux récupérés dans la vue
+      mainVue.songs=data["songs"];
+    } else {
+      console.log("Erreur " + req.status);
+    }
+};
+req.send();
 
 
 //diagramme : https://vuejs.org/v2/guide/instance.html#Lifecycle-Diagram

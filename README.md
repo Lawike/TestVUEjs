@@ -14,8 +14,3 @@ https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-js/s3.html
 
 # Total du temps passé sur ce projet :
 ~11h
-
-### Notes pour AJAX (mémo)
-Ajax permet de créer une interface fonctionnant sur un navigateur avec le langage JavaScript
-On utilise PHP pour : consulter une base de donnée et la metttre à jour avec les données entrées par l'interface, et il exécute les traitements demandés par l'utilisateur qui requièrent des données stockées sur le serveur.
-On envoie des données à un script PHP qui les écrit dans un fichier 
